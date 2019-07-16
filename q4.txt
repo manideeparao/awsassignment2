@@ -1,0 +1,47 @@
+
+1. From Q.3. 
+a vpc is created in US N Virginia region
+The three availability zones are us-east-1a,us-east-1b,us-east-1c
+
+vpc-0cda5bf300c988279
+igw-02d2dc1d0212cd7eb
+rtb-0baedea2ec9c0ad27
+
+us-east -1a
+public subnet-06d20bcb15e81265c
+private subnet-08e39446c396ef04d
+
+us-east-1b
+public subnet-040fa9d4a52c4df75
+private subnet-005b9fa86482b4e5b
+
+us-east-1c
+public subnet-03d44a60f427cb82d
+private subnet-00aa833f6dae77316
+
+2. three ec2 instances are created in the three private subnets listed above.
+
+3.a bastion server (ec2 instance) is created in a public subnet (public subnet-06d20bcb15e81265c)
+
+4. a new security group is created named as sg_bastion
+Security Group rules
+5. The inbound rules of bastian host allow the ip ranges of Quantiphi
+    
+   Type   Protocol   PortRange         Source            Description 
+   SSH     TCP        22         59.152.53.168/30        
+   SSH     TCP        22         59.152.53.104/29
+   SSH     TCP        22         59.152.53.200/29  
+   SSH     TCP        22         59.152.53.120/29
+   SSH     TCP        22         59.152.52.104/29
+   SSH     TCP        22         59.152.52.152/29
+   SSH     TCP        22         59.152.52.172/30
+   SSH     TCP        22         202.122.21.69/30
+ In outbound rules all traffic is allowed
+6. An elastic IP is attached to the bastian instance and given to three instances.
+   The inbound rules in the private instances security group is
+
+  Type   Protocol   PortRange         Source            Description 
+   SSH     TCP        22         3.216.222.22        
+
+
+

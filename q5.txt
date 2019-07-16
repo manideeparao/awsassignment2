@@ -1,0 +1,25 @@
+Step 1:
+Launch two ec2 instances.
+
+Step 2:
+Go to Mobaxterm.
+Declare any one of the instances as host.I declared my first instance as host.
+Run the following command.
+ssh-keygen –t rsa
+The pub key has been saved as “id_rsa.pub” and private key saved as “id_rsa”.
+Go to directory where the keys are stored.
+Open the public key file.
+Copy the public key.
+Sve it in a temporary file.
+
+Step 3:
+Now open destination ec2 instance.
+We replace public key of second instance with first one.
+
+Step 4:
+execute the following command.
+ssh destination private ip adress
+The destination instance is opened with its ip address displaying.
+
+
+Thus we have established a passwordless ssh.

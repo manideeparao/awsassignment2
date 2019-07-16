@@ -1,0 +1,28 @@
+Step 1: We launch an instance with ubuntu as AMI ubuntu and configure HTTP and Https in security group.
+Step 2: Execute the following shell script which installs apache server and adds index.html file.
+Script file
+
+#!/bin/bash
+sudo apt get update 
+sudo apt -y install apache2
+sudo mkdir -p /var/www/html/mywebsite
+sudo chown ubuntu /var/www/
+sudo chmod -R o+r /var/www/
+sudo chown -R 755 /var/www/
+echo "<html><body><h1> This is the first website. </h1></boody></html>" > /var/www/html/mywebsite/index.html
+sudo cp /etc/apache2/sites-available/000-default-conf /etc/apache2/sites-available/mywebsite.config
+
+Step 3: Create an image of this instance.
+Step 4: Go to launch configurations under Auto scaling, and select the configuration
+Step 5: Complete the auto scaling group creation.
+Step 6: Choose the launch configuration you have created.
+Step 7: Select the group size, the network and the 2 subnet in different availability zones
+Step 8: Click on configure load balancer.
+Step 9: Choose the classic load balancer, assign security gps, provide a certificate, configure health check.
+Step 10: Create a target group under load balancing.
+
+Step 11: Go to auto scaling groups and choose your group and edit it. Here add the load balancer and the target gps that
+we have created.
+
+The listner configuration would:
+    The port is set to HTTP and the target group we have created is chosen.
